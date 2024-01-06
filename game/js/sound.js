@@ -33,6 +33,36 @@ function playSound(target, loop) {
     }
   }
 }
+var currentMusicIndex = 0; // chỉ số của bản nhạc hiện tại đang phát
+// tôi muốn play một list nhạc và khi nào hết thì mới play lại từ đầu
+function playMusicList() {
+    if (soundOn) {
+        var sound = listNhac[currentMusicIndex];
+        var music = createjs.Sound.play(sound);
+        music.removeAllEventListeners();
+        music.addEventListener("complete", function () {
+            // khi một bản nhạc kết thúc, tăng chỉ số lên 1
+            currentMusicIndex++;
+            // nếu đã đến cuối danh sách, đặt lại chỉ số về 0
+            if (currentMusicIndex >= listNhac.length) {
+                currentMusicIndex = 0;
+            }
+            // phát bản nhạc tiếp theo
+            playMusicList(listNhac);
+        });
+    }
+}
+// function playMusic background
+var isPlaying = false;
+
+function playMusicListBackground() {
+    if (isPlaying) return;
+    if (soundOn) {
+        isPlaying = true;
+        playMusicList();
+    }
+}
+
 
 function stopSound() {
   createjs.Sound.stop();

@@ -75,29 +75,32 @@ function initPreload() {
   }
 
   if (soundOn) {
-    manifest.push({ src: "assets/sounds/click.ogg", id: "soundClick" });
-    manifest.push({ src: "assets/sounds/balls.ogg", id: "soundBalls" });
-    manifest.push({ src: "assets/sounds/reveal.ogg", id: "soundReveal" });
-    manifest.push({ src: "assets/sounds/startspin.ogg", id: "soundStartSpin" });
-    manifest.push({ src: "assets/sounds/win.ogg", id: "soundWin" });
-    manifest.push({ src: "assets/sounds/suck.ogg", id: "soundSuck" });
-    manifest.push({ src: "assets/sounds/complete.ogg", id: "soundComplete" });
-    manifest.push({ src: "assets/sounds/number.ogg", id: "soundNumber" });
-    manifest.push({ src: "assets/sounds/random.ogg", id: "soundRandom" });
-    manifest.push({ src: "assets/sounds/cage.ogg", id: "soundCage" });
-    manifest.push({ src: "assets/sounds/fail.ogg", id: "soundFail" });
-    manifest.push({ src: "assets/nhac/play.mp3", id: "play" });
-    listNhac.forEach((element) => {
+      manifest.push({ src: "assets/sounds/click.ogg", id: "soundClick" });
+      manifest.push({ src: "assets/sounds/balls.ogg", id: "soundBalls" });
+      manifest.push({ src: "assets/sounds/reveal.ogg", id: "soundReveal" });
       manifest.push({
-        src: "assets/nhac/list/" + element + ".mp3",
-        id: element,
+          src: "assets/sounds/startspin.ogg",
+          id: "soundStartSpin",
       });
-    });
+      manifest.push({ src: "assets/sounds/win.ogg", id: "soundWin" });
+      manifest.push({ src: "assets/sounds/suck.ogg", id: "soundSuck" });
+      manifest.push({ src: "assets/sounds/complete.ogg", id: "soundComplete" });
+      manifest.push({ src: "assets/sounds/number.ogg", id: "soundNumber" });
+      manifest.push({ src: "assets/sounds/random.ogg", id: "soundRandom" });
+      manifest.push({ src: "assets/sounds/cage.ogg", id: "soundCage" });
+      manifest.push({ src: "assets/sounds/fail.ogg", id: "soundFail" });
+      manifest.push({ src: "assets/nhac/play.mp3", id: "play" });
+      listNhac.forEach((element) => {
+          manifest.push({
+              src: "assets/nhac/list/" + element + ".mp3",
+              id: element,
+          });
+      });
 
-    //read list file sound from  assets/nhac/list
+      //read list file sound from  assets/nhac/list
 
-    createjs.Sound.alternateExtensions = ["mp3"];
-    loader.installPlugin(createjs.Sound);
+      createjs.Sound.alternateExtensions = ["mp3"];
+      loader.installPlugin(createjs.Sound);
   }
 
   loader.addEventListener("complete", handleComplete);
